@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Watch Price Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Guess the Watch Price</h1>
+        <p class="subtitle">Guess how much the most expensive example of this watch was auctioned for</p>
+        <div id="game">
+            <!-- Watch Information Section -->
+            <div id="watchInfo">
+                <p id="brandName"></p>
+                <p id="watchName"></p>
+                <p id="referenceNumber"></p>
+            </div>
+            <!-- Watch Image -->
+            <img id="watchImage" src="" alt="Watch Image">
+            <!-- Guess Input Section -->
+            <div class="input-group">
+                <input type="number" id="guessInput" placeholder="Enter your guess">
+                <span class="currency-label">USD</span>
+            </div>
+            <button id="submitGuess">Submit Guess</button>
+            <div id="result"></div>
+            <div id="score"></div>
+            <!-- Next Watch Button -->
+            <button id="nextWatch">Next Watch</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+/* Body and Container Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Main Title Styling */
+h1 {
+    margin-bottom: 10px;
+}
+
+/* Subtitle Styling */
+.subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Game Box Styling */
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 300px;
+}
+
+/* Watch Information Styling */
+#watchInfo {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#brandName, #watchName, #referenceNumber {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* Watch Image Styling for consistent size */
+#watchImage {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Input Group Styling */
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+#guessInput {
+    flex: 1;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.currency-label {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Button Styling */
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Result and Score Styling */
+#result, #score {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Next Watch Button Styling */
+#nextWatch {
+    margin-top: 20px;
+    background-color: #28a745;
+}
+
+#nextWatch:hover {
+    background-color: #218838;
+}
