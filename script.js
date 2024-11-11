@@ -1,20 +1,16 @@
-const EUR_TO_USD_RATE = 1.1;
 let score = 0;
 let currentWatchData = null;
 
 // Load JSON data
 async function loadWatchData() {
-    const response = await fetch('watch_data_fixed.json');
+    const response = await fetch('ebay_watches.json');
     const data = await response.json();
-    return data;
+    return data.findCompletedItemsResponse[0].searchResult[0].item;
 }
 
 // Function to randomly select a watch and display its details
 async function setupGame() {
-    const data = await loadWatchData();
-    const watches = Object.values(data.watch);
-
-    // Select and display a random watch
+    const watches = await loadWatchData();
     selectRandomWatch(watches);
 }
 
@@ -22,15 +18,19 @@ async function setupGame() {
 function selectRandomWatch(watches) {
     // Choose a random watch and extract data
     currentWatchData = watches[Math.floor(Math.random() * watches.length)];
-    const { brand, name, reference_number, images } = currentWatchData;
-    const watchImage = images[0];
-    const priceEUR = parseFloat(brand.pricerange_end);
-    const priceUSD = priceEUR * EUR_TO_USD_RATE;
+    const title = currentWatchData.title[0];
+    //const condition = currentWatchData.condition.conditionDisplayName[0];
+    let watchImage = currentWatchData.galleryURL[0];
 
-    // Display the brand, watch name, and reference number
-    document.getElementById("brandName").textContent = `Brand: ${brand.name}`;
-    document.getElementById("watchName").textContent = `Watch: ${name}`;
-    document.getElementById("referenceNumber").textContent = `Reference: ${reference_number}`;
+    // Modify image URL for higher resolution if needed
+    if (watchImage.includes("s-l140")) {
+        watchImage = watchImage.replace("s-l140", "s-l500"); // or "s-l1600" for even higher resolution
+    }
+
+    const priceUSD = parseFloat(currentWatchData.sellingStatus[0].convertedCurrentPrice[0].__value__);
+
+    // Display the title as the watch name
+    document.getElementById("watchName").textContent = `Watch Listing: ${title}`;
 
     // Display the image and start the guessing game
     document.getElementById("watchImage").src = watchImage;
@@ -47,8 +47,9 @@ function startGuessingGame(actualPrice) {
         const guess = parseInt(document.getElementById("guessInput").value);
         if (isNaN(guess)) return;
 
-        const difference = Math.abs(actualPrice - guess);
-        const points = Math.max(0, 1000 - difference);
+        const percent_difference = (1-Math.min(Math.abs((actualPrice - guess) / actualPrice),1)) * 10;
+        //const percent_difference = Math.min(Math.abs((actualPrice - guess) / actualPrice),1)
+        const points = Math.ceil(percent_difference);
         score += points;
 
         document.getElementById("result").textContent = `Actual Price: $${actualPrice.toFixed(2)}. You scored ${points} points!`;

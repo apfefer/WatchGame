@@ -1,0 +1,5 @@
+I went to the ebay developer tools at https://developer.ebay.com/my/api_test_tool?index=0&api=browse&call=item_summary_search__GET&variation=json&env=production
+
+I used the production account that I made and ran with this querry:
+
+https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=AndrewPf-AuctionG-PRD-1fe39b0d3-cd4ee4dc&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD=true&keywords=luxury+watch&itemFilter%280%29.name=SoldItemsOnly&itemFilter%280%29.value=true&paginationInput.entriesPerPage=9999&paginationInput.pageNumber=1
