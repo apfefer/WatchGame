@@ -39,22 +39,22 @@ function selectRandomWatch(watches) {
 
 // Function to handle the guessing game logic
 function startGuessingGame(actualPrice) {
-    // Reset result and score for each new watch
+    // Reset result for each new watch
     document.getElementById("result").textContent = '';
     document.getElementById("score").textContent = `Total Score: ${score}`;
 
-    document.getElementById("submitGuess").addEventListener("click", function() {
+    // Update the event listener for the Submit Guess button
+    document.getElementById("submitGuess").onclick = function() {
         const guess = parseInt(document.getElementById("guessInput").value);
         if (isNaN(guess)) return;
 
         const percent_difference = (1-Math.min(Math.abs((actualPrice - guess) / actualPrice),1)) * 10;
-        //const percent_difference = Math.min(Math.abs((actualPrice - guess) / actualPrice),1)
         const points = Math.ceil(percent_difference);
         score += points;
 
         document.getElementById("result").textContent = `Actual Price: $${actualPrice.toFixed(2)}. You scored ${points} points!`;
         document.getElementById("score").textContent = `Total Score: ${score}`;
-    });
+    };
 }
 
 // Event listener for the Next Watch button
